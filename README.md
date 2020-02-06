@@ -141,3 +141,41 @@ function getNumber({ first }: { first: number }) {
 const count = getNumber({ first: 1 });
 
 ```
+
+**数组**
+
+- 数组包含多类型
+
+  ```
+   const arr: (number | string)[] = [1, '2', 3]  //数组包括number和string类型
+  ```
+
+- 纯类型数组
+
+  ```
+  const stringArr: string[] = ['a', 'b', 'c'] //纯字符串类型数组
+
+  const undefinedArr: undefined[] = [undefined] //纯undefined数组
+  ```
+
+- 数组包含对象
+
+  ```
+  // type alias 类型别名 使用
+  type User = { name: string; age: number };
+  const objectArr: User[] = [{
+    name: 'dell',
+    age: 28
+   }];
+  class Teacher {
+    name: string;
+    age: number;
+  }
+  //数组子项为 Teacher 对象
+  const objectArr: Teacher[] = [
+  new Teacher(),
+  {
+  name: 'dell',
+  age: 28
+  }];
+  ```
