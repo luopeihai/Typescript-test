@@ -92,3 +92,39 @@ const teacherName: string = 'Dell' //字符串类型
     //通过函数整数相加判断类型
     const total = getTotal(1, 2);
   ```
+
+**函数相关类型**
+
+```
+ //函数返回类型为整数
+ function add(first: number, second: number): number {
+   return first + second;
+ }
+
+ //函数不返回函数类型
+ function sayHello(): void {
+   console.log('hello');
+ }
+
+//函数永远执行不了
+function errorEmitter(): never {
+    throw new Error();
+    console.log("执行不到")
+}
+
+/*
+ 定义函数参数为json 类型定义
+ first ,second 都为number 类型
+ 函数返回也为number
+*/
+function add({ first, second }: { first: number; second: number }): number {
+  return first + second;
+}
+const total = add({ first: 1, second: 2 });
+
+function getNumber({ first }: { first: number }) {
+  return first;
+}
+const count = getNumber({ first: 1 });
+
+```
