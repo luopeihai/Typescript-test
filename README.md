@@ -45,8 +45,13 @@ const point: Point = {
 基础类型:null, undefined, symbol, boolean, void
 
 ```
-const count: number = 123 //数字类型
+const count: number  = 123 //数字类型
+
 const teacherName: string = 'Dell' //字符串类型
+
+let valueStringOrNumber : string | number = 123 //valueStringOrNumber 为string 或者 number 类型
+
+
 ```
 
 **对象类型**
@@ -65,10 +70,18 @@ const teacherName: string = 'Dell' //字符串类型
 
     const numbers: number[] = [1, 2, 3]; //数字型数组
 
-    // 函数返回类型为数字
-    const getTotal: () => number = () => {
-         return 123;
+    /*
+      函数返回类型为数字
+      函数接受参数为字符串
+    */
+    const getTotal: (str:string) => number = (str) => {
+         return parseInt(str,10)
     };
+
+    //getTotal 函数也可以写成
+    const getTotal = (str:string):number =>{
+        return parseInt(str,10)
+    }
 
 ```
 
