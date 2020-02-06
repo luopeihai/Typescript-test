@@ -71,3 +71,24 @@ const teacherName: string = 'Dell' //字符串类型
     };
 
 ```
+
+**类型注解和类型推断**
+
+- type annotation 类型注解, 我们来告诉 TS 变量是什么类型(明确告诉)
+  ```
+  let count: number = 123 //我们告诉TS 变量类型
+  ```
+- type inference 类型推断, TS 会自动的去尝试分析变量的类型(需要 ts 推断)
+
+  ```
+  const firstNumber = 1;
+  const secondNumber = 2;
+  //通过变量推断结果给整数类型
+  const total = firstNumber + secondNumber;
+
+    function getTotal(firstNumber: number, secondNumber: number) {
+    return firstNumber + secondNumber;
+    }
+    //通过函数整数相加判断类型
+    const total = getTotal(1, 2);
+  ```
