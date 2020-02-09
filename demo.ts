@@ -9,3 +9,10 @@ function tsDemo(data: Point) {
 }
 
 tsDemo({ x: 1, y: 123 });
+
+function add({ first, second }: { first: number; second: number }): number {
+  return first + second;
+}
+
+const total = add({ first: 1, second: 2 });
+console.log(total);
