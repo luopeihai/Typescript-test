@@ -9,3 +9,29 @@ function tsDemo(data: Point) {
 }
 
 tsDemo({ x: 1, y: 123 });
+
+//类
+class Person {
+  name = "dell";
+  getName() {
+    return this.name;
+  }
+}
+
+// const person = new Person();
+// console.log(person.getName());
+
+class Teacher extends Person {
+  getTeacherName() {
+    return "Teacher";
+  }
+
+  //重写父类方法
+  getName() {
+    return super.getName() + "lee"; //调用父亲 getName()方法
+  }
+}
+
+const teacher = new Teacher();
+console.log(teacher.getName());
+console.log(teacher.getTeacherName());
