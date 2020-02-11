@@ -90,20 +90,46 @@
 // console.log(teacher.name);
 
 //单例模式
-class Demo {
-  private static instance: Demo;
-  private constructor(public name: string) {}
+// class Demo {
+//   private static instance: Demo;
+//   private constructor(public name: string) {}
 
-  static getInstance() {
-    if (!this.instance) {
-      //已经挂载 就返回对象
-      this.instance = new Demo("dell lee");
-    }
-    return this.instance;
+//   static getInstance() {
+//     if (!this.instance) {
+//       //已经挂载 就返回对象
+//       this.instance = new Demo("dell lee");
+//     }
+//     return this.instance;
+//   }
+// }
+
+// const demo1 = Demo.getInstance();
+// const demo2 = Demo.getInstance();
+// console.log(demo1.name);
+// console.log(demo2.name);
+
+// 抽象类 不可实例只能继承
+abstract class Geom {
+  width: number;
+  abstract getArea(): string;
+}
+
+class Circle extends Geom {
+  getArea() {
+    return "圆形面积宽";
   }
 }
 
-const demo1 = Demo.getInstance();
-const demo2 = Demo.getInstance();
-console.log(demo1.name);
-console.log(demo2.name);
+class Square {
+  getArea() {
+    return "正方形面积";
+  }
+}
+class Triangle {
+  getArea() {
+    return "三角形面积";
+  }
+}
+
+const circle = new Circle();
+console.log(circle.getArea());
