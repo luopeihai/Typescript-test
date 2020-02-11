@@ -251,3 +251,103 @@ const count = getNumber({ first: 1 });
   const teacherList: [string, string, number][] = [['dell', 'male', 19], ['sun', 'female', 26], ['jeny', 'female', 38]];
 
 ```
+
+
+**类**
+
+类的使用
+```
+class Person {
+  name = 'dell';
+  getName() {
+    return this.name;
+  }
+}
+
+const person = new Person()
+console.log(person.getName())
+```
+类继承
+```
+// 接上面代码
+class Teacher extends Person {
+  getTeacherName() {
+    return 'Teacher';
+  }
+
+  //重写父类方法
+  getName() { 
+    return super.getName() + 'lee'; //调用父亲 getName()方法
+  }
+}
+
+const teacher = new Teacher();
+console.log(teacher.getName());
+console.log(teacher.getTeacherName());
+```
+
+**类的访问类型和构造**
+
+类的访问类型有:private, protected, public
+- 类中属性默认为public访问类型,允许在类的内外被调用
+  ```
+  class Person {
+    name:string //相当于 public name : string
+  }
+  ```
+- private 允许在类内被使用
+  
+  ```
+  class Person {
+    private name:string 
+  }
+  const person = new Person
+  person.name = 'dell';//报错  name为private只能在类内使用
+  ```
+- protected 允许在类内及继承的子类中使用
+  ```
+  class Person {
+    protected name:string 
+  }
+
+  class Teacher extends Person{
+     public sayBy:void () {
+         console.log(this.name)
+     }
+  }
+
+  const teacher = new Teacher()
+  console.log(teacher.sayBy())
+  
+  ```
+* 构造
+  ```
+  class Person {
+    // 传统写法
+    // public name: string;
+    // constructor(name: string) {
+    //   this.name = name;
+    // }
+    // 简化写法
+    constructor(public name: string) {}
+  }
+  const person = new Person("dell");
+  console.log(person.name);
+  ```  
+  构造器的继承
+  ```
+  class Person {
+  constructor(public name: string) {}
+  }
+
+  class Teacher extends Person {
+    constructor(public age: number) {
+      super('dell'); //父类构造必须调用
+    }
+  }
+
+  const teacher = new Teacher(28);
+  console.log(teacher.age);
+  console.log(teacher.name);
+  ```
+
