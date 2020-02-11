@@ -75,16 +75,35 @@
 // console.log(person.name);
 
 //构造器的继承
-class Person {
-  constructor(public name: string) {}
-}
+// class Person {
+//   constructor(public name: string) {}
+// }
 
-class Teacher extends Person {
-  constructor(public age: number) {
-    super("dell");
+// class Teacher extends Person {
+//   constructor(public age: number) {
+//     super("dell");
+//   }
+// }
+
+// const teacher = new Teacher(28);
+// console.log(teacher.age);
+// console.log(teacher.name);
+
+//单例模式
+class Demo {
+  private static instance: Demo;
+  private constructor(public name: string) {}
+
+  static getInstance() {
+    if (!this.instance) {
+      //已经挂载 就返回对象
+      this.instance = new Demo("dell lee");
+    }
+    return this.instance;
   }
 }
 
-const teacher = new Teacher(28);
-console.log(teacher.age);
-console.log(teacher.name);
+const demo1 = Demo.getInstance();
+const demo2 = Demo.getInstance();
+console.log(demo1.name);
+console.log(demo2.name);
