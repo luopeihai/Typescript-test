@@ -28,16 +28,75 @@ ts-node demo.js
 
 **自定义类型**
 
+interface 和 type 相类似，但并不完全一致 type(类型别名) 区别于 interface,为 type 可以定义变量 or 对象,而 interface 只能定义对象
+
 ```
-interface Point {
-    x: number;
-    y: number;
+  type circle = string
+  type circleObj = {
+      x:string;
+      y:number
+  }
+```
+
+interface 代码
+
+```
+interface Person {
+  // readonly name: string; //readonly为只读
+  name: string;
+  age?: number; //为number 类型 可不存在
+  [propName: string]: any; //允许多出字符串 类型属性
+  say(): string; //属性可以是方法 返回为string类型
 }
 
-const point: Point = {
-    x: 3,
-    y: 4
+//获取person name属性
+const getPersonName = (person: Person): void => {
+  console.log(person.name);
 };
+
+//设置 person name属性
+const setPersonName = (person: Person, name: string): void => {
+  person.name = name;
+};
+
+const person = { //实例化
+  name: 'dell',
+  sex: 'male',
+  say() {
+    return 'say hello';
+  },
+};
+
+//调用函数
+getPersonName(person);
+setPersonName(person, 'lee');
+```
+
+interface 继承
+
+```
+//接上面的代码
+interface Teacher extends Person {
+  teach(): string;
+}
+
+//设置 teacher name属性
+const setTeacherName = (person: Teacher, name: string): void => {
+  person.name = name;
+};
+
+const teacher = { //实例化
+  name: 'dell',
+  sex: 'male',
+  say() {
+    return 'say hello';
+  },
+  teacher(){
+      return 'I am teacher'
+  }
+};
+setTeacherName(teacher,'tom')
+
 ```
 
 **基础类型**
@@ -49,7 +108,7 @@ const count: number  = 123 //数字类型
 
 const teacherName: string = 'Dell' //字符串类型
 
-let valueStringOrNumber : string | number = 123 //valueStringOrNumber 为string 或者 number 类型
+let valueStringOrNumber : string | number = 123 //为string 或者 number 类型
 
 
 ```
@@ -85,7 +144,7 @@ let valueStringOrNumber : string | number = 123 //valueStringOrNumber 为string 
 
 ```
 
-**类型注解和类型推断**
+**类型注解和推断**
 
 - type annotation 类型注解, 我们来告诉 TS 变量是什么类型(明确告诉)
   ```
@@ -142,6 +201,8 @@ const count = getNumber({ first: 1 });
 
 ```
 
+**注意上述代码 定义{first,second} : { first: number; second: number } 定义格式中结束是";"不是 json 结果**
+
 **数组**
 
 - 数组包含多类型
@@ -179,3 +240,14 @@ const count = getNumber({ first: 1 });
   age: 28
   }];
   ```
+
+  **元组**
+
+与数组不同 元组每列的数据类型明确
+
+```
+  const teacherInfo: [string, string, number] = ['Dell', 'male', 18]; //指定每个子项类型
+
+  const teacherList: [string, string, number][] = [['dell', 'male', 19], ['sun', 'female', 26], ['jeny', 'female', 38]];
+
+```
