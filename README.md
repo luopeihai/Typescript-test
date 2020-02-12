@@ -301,7 +301,7 @@ console.log(teacher.getTeacherName());
   class Person {
     private name:string 
   }
-  const person = new Person
+  const person = new Person()
   person.name = 'dell';//报错  name为private只能在类内使用
   ```
 - protected 允许在类内及继承的子类中使用
